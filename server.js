@@ -1,4 +1,13 @@
 // requires for external dependencies
+
+// plagarising:
+// https://github.com/nicolewallace09/team-profile-generator
+// https://github.com/JamesLJenks/10_OOP-Team-Profile-Generator
+// https://github.com/amandardz/Team-Profile-Generator
+// https://github.com/malloryfaria/team-profile-generator
+// https://github.com/RyanEllingson/Team-Profile-Generator
+// 
+
 // express:
 const express = require('express');
 const app = express();
