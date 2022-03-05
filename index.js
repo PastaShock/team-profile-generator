@@ -1,14 +1,14 @@
-const template = require('./lib/template');
+// const template = require('./lib/template');
 
 const { Intern, Engineer, Manager } = require('./lib/employeeTypes');
 
 const fs = require('fs');
 const inquirer = require('inquirer');
-
+const emailval = require('email-validator');
 const teamArr = [];
 
 const addManager = () => {
-    return inquirer.prompt ({
+    return inquirer.prompt ([
         {
             type: 'input',
             name: 'name',
@@ -22,22 +22,14 @@ const addManager = () => {
             name: 'id',
             message: "Please enter the manager's ID.",
             validate: nameInput => {
-                return (nameInput ? nameInput : console.log('Please enter a valid ID!'));
+                return ((typeof nameInput) === Number ? nameInput : console.log('Please enter a valid ID!'));
             }
         },
         {
             type: 'input',
             name: 'email',
             message: "Please enter the manager's email.",
-            validate: email => {
-                valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
-                if (valid) {
-                    return true;
-                } else {
-                    console.log ('Please enter an email!')
-                    return false; 
-                }
-            }
+            validate: emailval
         },
         {
             type: 'input',
@@ -63,17 +55,12 @@ const addManager = () => {
 };
 
 const addEmployee = () => {
-    console.log(`
-    =================
-    Adding employees to the team
-    =================
-    `);
-
+    console.log('adding employees');
     return inquirer.prompt ([
         {
             type: 'list',
             name: 'role',
-            message: "Please choose your employee's role",
+            message: "Pick a role for employee",
             choices: ['Engineer', 'Intern']
         },
         {

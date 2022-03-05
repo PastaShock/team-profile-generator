@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/PastaShock/team-profile-generator#readme",
   "dependencies": {
+    "email-validator": "^2.0.4",
     "express": "^4.17.3",
     "inquirer": "^8.2.0"
   },
