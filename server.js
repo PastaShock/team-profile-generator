@@ -19,6 +19,7 @@ const fs = require('fs');
 
 // in-app libraries:
 const Employees = req('./lib/employees');
+const HTMLtemplate = require('./src/template');
 
 app.get('/', (req, res) => res.send('Hello World!'));
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
