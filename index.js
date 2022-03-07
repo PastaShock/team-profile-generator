@@ -14,7 +14,8 @@ const addManager = () => {
             name: 'name',
             message: 'What is the name of the manager?',
             validate: nameInput => {
-                return (nameInput ? nameInput : console.log('Please enter a name'));
+                nameCheck = (typeof(nameInput) === 'string')
+                return (nameCheck ? nameInput : console.log('Please enter a name'));
             }
         },
         {
@@ -22,7 +23,8 @@ const addManager = () => {
             name: 'id',
             message: "Please enter the manager's ID.",
             validate: nameInput => {
-                return ((typeof nameInput) === Number ? nameInput : console.log('Please enter a valid ID!'));
+                nameCheck = (typeof(nameInput) === 'string')
+                return (nameCheck ? nameInput : console.log('Please enter a valid ID!'));
             }
         },
         {
