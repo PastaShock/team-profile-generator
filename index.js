@@ -1,10 +1,11 @@
-// const template = require('./lib/template');
+const template = require('./src/generate');
 
 const { Intern, Engineer, Manager } = require('./lib/employeeTypes');
 
 const fs = require('fs');
 const inquirer = require('inquirer');
 const emailval = require('email-validator');
+const generateTeam = require('./src/generate');
 const teamArr = [];
 
 const addManager = () => {
@@ -13,45 +14,47 @@ const addManager = () => {
             type: 'input',
             name: 'name',
             message: 'What is the name of the manager?',
-            validate: nameInput => {
-                nameCheck = (typeof(nameInput) === 'string')
-                return (nameCheck ? nameInput : console.log('Please enter a name'));
-            }
+            // validate: nameInput => {
+            //     inputCheck = (typeof nameInput) === 'string' 
+            //     inputCheck ? true : console.log('Please enter a name');
+            // }
         },
         {
             type: 'input',
             name: 'id',
             message: "Please enter the manager's ID.",
-            validate: nameInput => {
-                nameCheck = (typeof(nameInput) === 'string')
-                return (nameCheck ? nameInput : console.log('Please enter a valid ID!'));
-            }
+            // validate: nameInput => {
+            //     let inputCheck = (typeof nameInput) === 'number'
+            //     inputCheck ? nameInput : console.log('Please enter a valid ID!');
+            // }
         },
         {
             type: 'input',
             name: 'email',
             message: "Please enter the manager's email.",
-            validate: emailval
+            // validate: nameInput => {
+            //     return emailval ? true : console.log('Please enter a valid email');
+            // }
         },
         {
             type: 'input',
             name: 'officeNumber',
             message: "Please enter the manager's office number",
-            validate: nameInput => {
-                if  (isNaN(nameInput)) {
-                    console.log ('Please enter an office number!')
-                    return false; 
-                } else {
-                    return true;
-                }
-            }
+            // validate: nameInput => {
+            //     if  (isNaN(nameInput)) {
+            //         console.log ('Please enter an office number!')
+            //         return false; 
+            //     } else {
+            //         return true;
+            //     }
+            // }
         }
     ])
     .then(managerInput => {
         const  { name, id, email, officeNumber } = managerInput; 
         const manager = new Manager (name, id, email, officeNumber);
 
-        teamArray.push(manager); 
+        teamArr.push(manager); 
         console.log(manager); 
     })
 };
@@ -155,12 +158,12 @@ const addEmployee = () => {
             console.log(employee);
         }
 
-        teamArray.push(employee); 
+        teamArr.push(employee); 
 
         if (confirmAddEmployee) {
-            return addEmployee(teamArray); 
+            return addEmployee(teamArr); 
         } else {
-            return teamArray;
+            return teamArr;
         }
     })
 
@@ -183,8 +186,8 @@ const writeFile = data => {
 
 addManager()
   .then(addEmployee)
-  .then(teamArray => {
-    return generateHTML(teamArray);
+  .then(teamArr => {
+    return generateTeam(teamArr);
   })
   .then(pageHTML => {
     return writeFile(pageHTML);
