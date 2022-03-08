@@ -187,7 +187,7 @@ const writeFile = data => {
 addManager()
   .then(addEmployee)
   .then(teamArr => {
-      console.log(teamArr)
+    //   console.log(teamArr)
     return generateTeam(teamArr);
   })
   .then(pageHTML => {
