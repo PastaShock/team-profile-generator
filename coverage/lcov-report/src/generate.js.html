@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>25/25</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>24/24</span>
+                <span class='fraction'>27/27</span>
             </div>
         
             
@@ -141,7 +141,9 @@
 <a name='L76'></a><a href='#L76'>76</a>
 <a name='L77'></a><a href='#L77'>77</a>
 <a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,15 +157,17 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -232,31 +236,33 @@ function generateCards(team) {
       case 'Manager':
         const manager = new Manager(teamArray.id, teamArray.name, teamArray.email, teamArray.officeNumber);
         var auxKey = "office number";
-        cards.push(generateCard(manager.name, manager.role, manager.id, manager.email, auxKey, manager.officeNumber));
+        var emoji = "📈";
+        cards.push(generateCard(manager.name, manager.getRole(), manager.id, manager.email, auxKey, manager.officeNumber, emoji));
         // console.log(manager);
         break;
       case 'Engineer':
         const engineer = new Engineer(teamArray.id, teamArray.name, teamArray.email, teamArray.github);
         auxKey = "github";
-        // console.log(generateCard(engineer.name, engineer.role, engineer.id, engineer.email, auxKey, engineer.officenumber));
-        cards.push(generateCard(engineer.name, engineer.role, engineer.id, engineer.email, auxKey, engineer.github));
+        emoji = "💻";
+        cards.push(generateCard(engineer.name, engineer.getRole(), engineer.id, engineer.email, auxKey, engineer.github, emoji));
         break;
       case 'Intern':
         const intern = new Intern(teamArray.id, teamArray.name, teamArray.email, teamArray.school);
         auxKey = "school";
-        cards.push(generateCard(intern.name, intern.role, intern.id, intern.email, auxKey, intern.school));
+        emoji = "🏫";
+        cards.push(generateCard(intern.name, intern.getRole(), intern.id, intern.email, auxKey, intern.school, emoji));
         break;
     }
   }
   return cards.join(``)
 }
 &nbsp;
-let generateCard = (name, role, id, email, auxKey, auxVal) =&gt; {
+let generateCard = (name, role, id, email, auxKey, auxVal, emoji) =&gt; {
   return `
   &lt;div class="card m-1 shadow" style="width: 18rem"&gt;
     &lt;div class='card-header'&gt;
       &lt;h3 class="card-title"&gt;${name}&lt;/h3&gt;
-      &lt;h6 class="card-text"&gt;&lt;i class="fa fa-coffee"&gt;&lt;/i&gt; ${role}&lt;/h6&gt;
+      &lt;h6 class="card-text"&gt;&lt;i class="fa"&gt;${emoji}&lt;/i&gt; ${role}&lt;/h6&gt;
     &lt;/div&gt;
     &lt;div class="card-body"&gt;
       &lt;ul class="list-group list-group-flush"&gt;
@@ -280,12 +286,12 @@ return `
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
   ${fontAwesome}
   ${bootstrap}
-  &lt;title&gt;My Team&lt;/title&gt;
+  &lt;title&gt;Tech Startup&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;div class="jumbotron jumbotron-fluid bg-warning"&gt;
   &lt;div class="container"&gt;
-    &lt;h1 class="display-4 text-center"&gt;My Team&lt;/h1&gt;
+    &lt;h1 class="display-4 text-center"&gt;Tech Startup&lt;/h1&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="d-flex flex-row flex-wrap justify-content-center"&gt;
@@ -304,7 +310,7 @@ module.exports = { generateTeam };</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Mar 07 2022 22:11:55 GMT-0800 (Pacific Standard Time)
+                at Mon Mar 07 2022 22:46:59 GMT-0800 (Pacific Standard Time)
             </div>
         <script src="../prettify.js"></script>
         <script>

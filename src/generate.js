@@ -11,31 +11,33 @@ function generateCards(team) {
       case 'Manager':
         const manager = new Manager(teamArray.id, teamArray.name, teamArray.email, teamArray.officeNumber);
         var auxKey = "office number";
-        cards.push(generateCard(manager.name, manager.role, manager.id, manager.email, auxKey, manager.officeNumber));
+        var emoji = "📈";
+        cards.push(generateCard(manager.name, manager.getRole(), manager.id, manager.email, auxKey, manager.officeNumber, emoji));
         // console.log(manager);
         break;
       case 'Engineer':
         const engineer = new Engineer(teamArray.id, teamArray.name, teamArray.email, teamArray.github);
         auxKey = "github";
-        // console.log(generateCard(engineer.name, engineer.role, engineer.id, engineer.email, auxKey, engineer.officenumber));
-        cards.push(generateCard(engineer.name, engineer.role, engineer.id, engineer.email, auxKey, engineer.github));
+        emoji = "💻";
+        cards.push(generateCard(engineer.name, engineer.getRole(), engineer.id, engineer.email, auxKey, engineer.github, emoji));
         break;
       case 'Intern':
         const intern = new Intern(teamArray.id, teamArray.name, teamArray.email, teamArray.school);
         auxKey = "school";
-        cards.push(generateCard(intern.name, intern.role, intern.id, intern.email, auxKey, intern.school));
+        emoji = "🏫";
+        cards.push(generateCard(intern.name, intern.getRole(), intern.id, intern.email, auxKey, intern.school, emoji));
         break;
     }
   }
   return cards.join(``)
 }
 
-let generateCard = (name, role, id, email, auxKey, auxVal) => {
+let generateCard = (name, role, id, email, auxKey, auxVal, emoji) => {
   return `
   <div class="card m-1 shadow" style="width: 18rem">
     <div class='card-header'>
       <h3 class="card-title">${name}</h3>
-      <h6 class="card-text"><i class="fa fa-coffee"></i> ${role}</h6>
+      <h6 class="card-text"><i class="fa">${emoji}</i> ${role}</h6>
     </div>
     <div class="card-body">
       <ul class="list-group list-group-flush">
