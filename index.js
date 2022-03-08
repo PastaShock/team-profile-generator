@@ -5,7 +5,7 @@ const { Intern, Engineer, Manager } = require('./lib/employeeTypes');
 const fs = require('fs');
 const inquirer = require('inquirer');
 const emailval = require('email-validator');
-const generateTeam = require('./src/generate');
+const {generateTeam} = require('./src/generate');
 const teamArr = [];
 
 const addManager = () => {
@@ -187,6 +187,7 @@ const writeFile = data => {
 addManager()
   .then(addEmployee)
   .then(teamArr => {
+      console.log(teamArr)
     return generateTeam(teamArr);
   })
   .then(pageHTML => {

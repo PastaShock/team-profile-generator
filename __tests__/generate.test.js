@@ -3,6 +3,7 @@ const generate = require('../src/generate');
 const { it, expect } = require('@jest/globals');
 const Employee = require('../lib/employee');
 const { Engineer, Intern, Manager } = require('../lib/employeeTypes');
+const { fontAwesome, bootstrap } = require('../lib/sources');
 
 describe('Create a card for an employee', () => {
     it('should take a team members data in and generate a card', () => {
@@ -23,3 +24,7 @@ test('get html from function based on data', () => {
     let employee = new Engineer('First Last', 1, 'email@email.com', 'pastashock');
     expect(generate.generateTeam(employee)).toEqual(expect.any(String));
 });
+
+test('get the external css/js variables from the sources file', () => {
+    expect(fontAwesome && bootstrap).toEqual(expect.any(String));
+})
