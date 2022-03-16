@@ -25,7 +25,8 @@ github URL: https://github.com/PastaShock/team-profile-generator
 ### Why did I make this project?
 This project exists to as an excercise in taking data into my code in a fixed, programmatic way and storing it to be manipulated later. I also did a lot of requires and exports in this excercise.
 
-![screenshot of the app](./Assets/team-profile-generator.gif)
+Click the image for to see the video on youtube!
+[![screenshot of the app](./Assets/team-profile-generator.gif)](https://youtu.be/uhqP8pyZ35I)
 
 ### What makes this app standout?
 This project stands out because I made it.
